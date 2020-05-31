@@ -29,13 +29,13 @@ public class DiceSearchJOb {
 		String actualTitle = driver.getTitle();
 		String expectedTitle = "JobSearch for Technology Professionals | Dice,com";
 		
-//		if (actualTitle.equals(expectedTitle)) {
-//			System.out.println("Step PASS.Dice homepage successfully loaded");
-//		}else {
-//			System.out.println("Step FAIL.Dice homepage did not load sucessfully loaded");
-//			throw new RuntimeException ("Step FAIl.Dice homepage did not load successfully");
-//		}
-//		
+		if (actualTitle.equals(expectedTitle)) {
+			System.out.println("Step PASS.Dice homepage successfully loaded");
+		}else {
+			System.out.println("Step FAIL.Dice homepage did not load sucessfully loaded");
+			throw new RuntimeException ("Step FAIl.Dice homepage did not load successfully");
+		}
+		
 		String keyword = "java developer";
 		driver.findElement(By.name("k")).sendKeys(keyword);;
 		
@@ -44,21 +44,23 @@ public class DiceSearchJOb {
 		driver.findElement(By.id("nav-location")).sendKeys(location);
 		
 		driver.findElement(By.name("Search")).click();
-//		
-//		String count = driver.findElement(By.id("posiCountId")).getText();
-//		System.out.println(count);
-//		//ensure count is more than0;
-//		int countResult = Integer.parseInt(count.replace(",", ""));
-//		
-//		if (countResult >0) {
-//			System.out.println("Step Pass: Keyword : " + keyword + " search returned " + countResult + "results in " + location);
-//		}else {
-//			System.out.println("Step Fail: Keyword : " + keyword + " search returned " + countResult + "results in " + location);
-//			
-//		}
-//		
-//		driver.close();
 		
+		String count = driver.findElement(By.id("posiCountId")).getText();
+		System.out.println(count);
+		//ensure count is more than0;
+		int countResult = Integer.parseInt(count.replace(",", ""));
+		
+		if (countResult >0) {
+			System.out.println("Step Pass: Keyword : " + keyword + " search returned " + countResult + "results in " + location);
+		}else {
+			System.out.println("Step Fail: Keyword : " + keyword + " search returned " + countResult + "results in " + location);
+			
+		}
+		
+		
+		driver.close();
+		
+		System.out.println("TEst completed -" + LocalDateTime.now());
 	}
 
 }
